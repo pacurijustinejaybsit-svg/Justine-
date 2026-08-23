@@ -1,1 +1,56 @@
+<?php
+// Simple PHP greeting example
+$name = "";
+$greeting = "";
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $greeting = "Hello, " . htmlspecialchars($name) . "! Welcome to PHP.";
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Group 2 Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f4f8;
+            padding: 50px;
+        }
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Group 2 Page</h1>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php if ($greeting): ?>
+        <p style="color:blue;"><?php echo $greeting; ?></p>
+    <?php endif; ?>
+
+    <button onclick="showMessage()">Click Me</button>
+    <p id="message"></p>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").innerText = "You clicked the button!";
+        }
+    </script>
+
+</body>
+</html>
